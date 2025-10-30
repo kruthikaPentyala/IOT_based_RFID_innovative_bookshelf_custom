@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+import Transactions from "./components/Transactions";
+import CurrentPositions from "./components/CurrentPositions";
+import AddMapping from "./pages/AddMapping";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+        <h1>📚 Library WPT Dashboard</h1>
+
+        {/* ✅ Simple Navigation Bar */}
+        <nav style={{ marginBottom: "20px" }}>
+          <Link to="/" style={{ marginRight: "15px" }}>Transactions</Link>
+          <Link to="/positions" style={{ marginRight: "15px" }}>Current Positions</Link>
+          <Link to="/add-mapping">Add Mapping</Link>
+        </nav>
+
+        {/* ✅ Routes */}
+        <Routes>
+          <Route path="/" element={<Transactions />} />
+          <Route path="/positions" element={<CurrentPositions />} />
+          <Route path="/add-mapping" element={<AddMapping />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
