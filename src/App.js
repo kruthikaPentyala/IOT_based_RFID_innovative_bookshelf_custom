@@ -1,28 +1,21 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
-import Transactions from "./components/Transactions";
-import CurrentPositions from "./components/CurrentPositions";
-import AddMapping from "./pages/AddMapping";
+import BookStatus from "./BookStatus";
+import Mapping from "./components/Mapping";
 
 function App() {
   return (
     <Router>
-      <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-        <h1>📚 Library WPT Dashboard</h1>
-
-        {/* ✅ Simple Navigation Bar */}
+      <div style={{ padding: "20px" }}>
+        <h1>📖 Library Dashboard</h1>
         <nav style={{ marginBottom: "20px" }}>
-          <Link to="/" style={{ marginRight: "15px" }}>Transactions</Link>
-          <Link to="/positions" style={{ marginRight: "15px" }}>Current Positions</Link>
-          <Link to="/add-mapping">Add Mapping</Link>
+          <Link to="/" style={{ marginRight: "10px" }}>Book Status</Link>
+          <Link to="/mapping">Mapping</Link>
         </nav>
 
-        {/* ✅ Routes */}
         <Routes>
-          <Route path="/" element={<Transactions />} />
-          <Route path="/positions" element={<CurrentPositions />} />
-          <Route path="/add-mapping" element={<AddMapping />} />
+          <Route path="/" element={<BookStatus />} />
+          <Route path="/mapping" element={<Mapping />} />
         </Routes>
       </div>
     </Router>

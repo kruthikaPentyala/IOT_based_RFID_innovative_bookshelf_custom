@@ -1,25 +1,26 @@
 import requests
 import random
 import time
-import json
 
-API_ENDPOINT = "http://127.0.0.1:5000/log"  # Flask server
-
-tags = ["TAG001", "TAG002", "TAG003", "TAG004", "TAG005"]
-shelves = ["SHELF_A1", "SHELF_A2", "SHELF_B1", "SHELF_B2", "SHELF_C1"]
+URL = "http://127.0.0.1:5000/log"  # Change if Flask runs elsewhere
 
 while True:
-    tag = random.choice(tags)
-    shelf = random.choice(shelves)
-    payload = {"tag_id": tag, "position": shelf}
+    # Simulate test data
+    position = random.choice(["A", "B"])
+    status = random.choice(["placed", "removed"])
+    duty_cycle = round(random.uniform(65, 85), 2)
 
+    payload = {
+        "position": position,
+        "status": status,
+        "duty_cycle": duty_cycle
+    }
+
+    print("Sending:", payload)
     try:
-        response = requests.post(API_ENDPOINT, json=payload)
-        if response.status_code == 200:
-            print(f"Logged {tag} at {shelf}")
-        else:
-            print(f"Error: {response.text}")
+        res = requests.post(URL, json=payload)
+        print("Response:", res.text)
     except Exception as e:
-        print("Request failed:", e)
+        print("Error:", e)
 
-    time.sleep(3)
+    time.sleep(5)
