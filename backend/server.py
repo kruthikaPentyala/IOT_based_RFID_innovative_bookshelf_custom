@@ -5,7 +5,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 cred = credentials.Certificate("rfid-bookshelf-tracking-firebase-adminsdk-fbsvc-7565320b37.json")
-initialize_app(cred, {'databaseURL': 'https://rfid-bookshelf-tracking-default-rtdb.firebaseio.com/'})
+initialize_app(cred, {'databaseURL': 'URL'})
 
 @app.route('/log', methods=['POST'])
 def log_data():
